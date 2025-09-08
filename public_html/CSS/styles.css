@@ -1,0 +1,388 @@
+/* ============================
+   ESTRUCTURA GENERAL
+============================ */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+ background: linear-gradient(to bottom, #fff5f5, #f4f4f4);
+}
+
+/* ============================
+   BARRA SUPERIOR INSTITUCIONAL
+============================ */
+.barra-superior {
+  position: sticky; /* Se mantiene visible al hacer scroll */
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1em;
+  padding: 1.8em;
+  background: linear-gradient(90deg, #A30D25, #C8102E);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Título institucional */
+.titulo {
+  font-size: 2em;
+  color: white;
+  margin: 0;
+  flex: 0 0 auto;
+}
+
+/* Menú horizontal */
+.menu-navegacion ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-navegacion a {
+  text-decoration: none;
+  color: #C8102E;
+  background: white;
+  padding: 0.7em 1.4em; /* 👈 más espacio interno */
+  border-radius: 14px;
+  font-weight: bold;
+  font-size: 1.15em; /* 👈 ligeramente más grande */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+
+.menu-navegacion a:hover {
+  background-color: #ffe5e5;
+  transform: translateY(-2px);
+}
+
+/* Buscador alineado con el menú */
+.buscador {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  flex: 0 0 auto;
+}
+
+/* Campo de búsqueda */
+#buscar {
+  padding: 0.6em 3em;
+  font-size: 1em;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  width: 200px;
+  
+}
+
+/* Botón ver todos */
+#verTodo {
+  background: #000000 ;
+  color: #f4f4f4; 
+  font-weight: bold;
+  border: 2px solid #C8102E;
+  height: 40px;
+  padding: 0 1.2em; /* Espaciado horizontal */
+  display: flex;
+  align-items: center;
+
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+#verTodo:hover {
+  background-color: #ffe5e5;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(200, 16, 46, 0.3);
+}
+
+
+
+/* ============================
+   CARRUSEL DE PROMOCIONES
+============================ */
+.carrusel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carrusel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  width: 100%;
+  max-width: 100vw;
+  height: 500px;
+  margin: 0 auto 3em;
+  cursor: grab;
+}
+
+.carrusel:active {
+  cursor: grabbing;
+}
+
+.carrusel::-webkit-scrollbar {
+  display: none;
+}
+
+.tarjeta {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.tarjeta img {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.tarjeta img:hover {
+  transform: scale(1.02);
+}
+
+/* Flechas de navegación */
+.flecha {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 77, 77, 0.85);
+  color: white;
+  border: none;
+  font-size: 2.2em;
+  padding: 0.2em 0.5em;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.flecha:hover {
+  background: #b30000;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.flecha.izquierda {
+  left: 20px;
+}
+
+.flecha.derecha {
+  right: 20px;
+}
+
+/* Puntos de navegación */
+.puntos {
+  text-align: center;
+  margin-top: 1em;
+}
+
+.puntos span {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 6px;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.puntos .activo {
+  background-color: #b30000;
+}
+.mensaje-objetivo {
+  font-size: 1.7em;
+  font-weight: 600;
+  color: #C8102E; /* Rojo institucional UTP */
+  text-align: center;
+  margin: 2em auto;
+  max-width: 800px;
+  letter-spacing: 0.5px;
+}
+
+
+
+/* ============================
+   CONTENIDO PRINCIPAL
+============================ */
+.menu-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 2em;
+  gap: 1em;
+}
+
+/* ============================
+   TARJETAS DE PRODUCTO
+============================ */
+.producto {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(179, 0, 0, 0.15);
+  padding: 1em;
+  width: 260px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.producto:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(179, 0, 0, 0.25);
+}
+
+.producto img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  background-color: #eee;
+}
+
+.producto h3 {
+  display: inline-block;
+  background: #fff0f0;
+  padding: 0.3em 0.8em;
+  border-radius: 20px;
+  font-size: 1.4em;
+  color: #000000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.producto:hover h3 {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+.producto p {
+  margin: 0.2em 0;
+  font-size: 1em;
+}
+
+.precio {
+  font-weight: bold;
+  color: #b30000;
+  font-size: 1.2em;
+}
+
+/* ============================
+   BOTÓN AGREGAR PRODUCTO
+============================ */
+button {
+  background: linear-gradient(135deg, #b30000, #ff4d4d);
+  color: white;
+  border: none;
+  padding: 0.6em 1.2em;
+  margin-top: 0.5em;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1em;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #990000;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 77, 77, 0.4);
+}
+
+/* ============================
+   PIE DE PÁGINA
+============================ */
+footer {
+  background: linear-gradient(90deg, #A30D25, #C8102E);
+  color: white;
+  text-align: center;
+  padding: 1em;
+  margin-top: 2em;
+}
+
+/* ============================
+   TÍTULO FIJO DE SECCIÓN ACTIVA
+============================ */
+.titulo-seccion {
+  position: fixed;
+  top: 100px;
+  left: 20px;
+  font-size: 2.2em;
+  font-weight: 700;
+  color: #b30000;
+  background: white;
+  padding: 0.4em 1em;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 999;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: transform 0.3s ease;
+}
+
+.titulo-seccion:hover {
+  transform: scale(1.05);
+}
+
+/* ============================
+   ENCABEZADOS DE SECCIÓN (h2)
+============================ */
+section h2 {
+  font-size: 2.8em; /* Letras más grandes */
+  font-weight: 800;
+  color: white;
+  background: linear-gradient(to right, #1c1c1c, #3a3a3a); /* Degradado negro-plomo */
+  padding: 3em 0;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 4em 0 2em;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  border-radius: 12px;
+  animation: fadeInUp 0.6s ease forwards;
+  scroll-margin-top: 120px; /* Alineación perfecta al hacer clic desde el menú */
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+
+section h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #ff4d4d;
+  margin: 0.5em auto 0;
+  border-radius: 2px;
+}
+
+/* ============================
+   ANIMACIONES
+============================ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
